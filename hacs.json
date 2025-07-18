@@ -1,5 +1,5 @@
 {
-  "name": "Date Time Card",
+  "name": "Localized Date Time Card",
   "render_readme": true,
-  "filename": "date-time-card.js"
+  "filename": "home-assistant-localized-date-time-card.js"
 }
