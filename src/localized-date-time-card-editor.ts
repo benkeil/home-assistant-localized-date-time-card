@@ -8,7 +8,7 @@ export class LocalizedDateTimeCardEditor extends LitElement {
   @property({ attribute: false })
   public hass!: HomeAssistant
   @property({ attribute: false })
-  public config!: CardConfig
+  private config!: CardConfig
 
   public setConfig(config: CardConfig): void {
     this.config = config

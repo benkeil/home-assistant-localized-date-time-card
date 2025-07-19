@@ -13,7 +13,7 @@ export default defineConfig({
         inlineDynamicImports: true,
       },
     },
-    target: 'es2021',
+    // target: 'es2021',
     minify: true,
     outDir: 'dist',
     emptyOutDir: true,
