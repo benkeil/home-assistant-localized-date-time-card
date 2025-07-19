@@ -576,13 +576,13 @@ let y = class extends v {
     return document.createElement("localized-date-time-card-editor");
   }
   getCardSize() {
-    return 2;
+    return 1;
   }
   getGridOptions() {
     return {
-      rows: 2,
+      rows: 1,
       columns: 6,
-      min_rows: 2
+      min_rows: 1
     };
   }
   getDateTime() {
@@ -607,7 +607,7 @@ let y = class extends v {
   render() {
     const r = this.getLocale(), t = {
       ...y.defaultDateTimeFormatOptions,
-      ...this.config
+      ...this.config.options
     }, e = this.getDateTime().toLocaleDateString(r, t);
     return at` <ha-card>
       <div class="date-time align-center">${e}</div>

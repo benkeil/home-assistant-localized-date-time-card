@@ -77,14 +77,14 @@ export class LocalizedDateTimeCard extends LitElement {
   `
 
   public getCardSize() {
-    return 2
+    return 1
   }
 
   public getGridOptions() {
     return {
-      rows: 2,
+      rows: 1,
       columns: 6,
-      min_rows: 2,
+      min_rows: 1,
     }
   }
 
@@ -117,7 +117,7 @@ export class LocalizedDateTimeCard extends LitElement {
     const locale = this.getLocale()
     const options = {
       ...LocalizedDateTimeCard.defaultDateTimeFormatOptions,
-      ...this.config,
+      ...this.config.options,
     }
     const dateStr = this.getDateTime().toLocaleDateString(locale, options)
     return html` <ha-card>
