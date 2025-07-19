@@ -4,7 +4,7 @@ import { resolve } from 'path'
 export default defineConfig({
   build: {
     lib: {
-      entry: resolve(__dirname, 'src/localized-date-time-card.ts'),
+      entry: resolve(__dirname, 'src/index.ts'),
       formats: ['es'],
       fileName: () => 'home-assistant-localized-date-time-card.js',
     },
