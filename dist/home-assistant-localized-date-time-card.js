@@ -1,19 +1,19 @@
 var w = Object.defineProperty, v = Object.defineProperties;
 var D = Object.getOwnPropertyDescriptors;
-var m = Object.getOwnPropertySymbols;
+var g = Object.getOwnPropertySymbols;
 var C = Object.prototype.hasOwnProperty, O = Object.prototype.propertyIsEnumerable;
 var p = (t, e, a) => e in t ? w(t, e, { enumerable: !0, configurable: !0, writable: !0, value: a }) : t[e] = a, l = (t, e) => {
   for (var a in e || (e = {}))
     C.call(e, a) && p(t, a, e[a]);
-  if (m)
-    for (var a of m(e))
+  if (g)
+    for (var a of g(e))
       O.call(e, a) && p(t, a, e[a]);
   return t;
 }, u = (t, e) => v(t, D(e));
 import { css as _, LitElement as f, html as b } from "lit";
 import { property as d, customElement as y } from "lit/decorators.js";
-var $ = Object.defineProperty, T = Object.getOwnPropertyDescriptor, h = (t, e, a, i) => {
-  for (var n = i > 1 ? void 0 : i ? T(e, a) : e, o = t.length - 1, s; o >= 0; o--)
+var $ = Object.defineProperty, z = Object.getOwnPropertyDescriptor, m = (t, e, a, i) => {
+  for (var n = i > 1 ? void 0 : i ? z(e, a) : e, o = t.length - 1, s; o >= 0; o--)
     (s = t[o]) && (n = (i ? s(e, a, n) : s(n)) || n);
   return i && n && $(e, a, n), n;
 };
@@ -120,19 +120,19 @@ r.styles = _`
       }
     }
   `;
-h([
+m([
   d({ attribute: !1 })
 ], r.prototype, "hass", 2);
-h([
+m([
   d({ attribute: !1 })
 ], r.prototype, "config", 2);
-r = h([
+r = m([
   y("localized-date-time-card")
 ], r);
-var x = Object.defineProperty, z = Object.getOwnPropertyDescriptor, g = (t, e, a, i) => {
-  for (var n = i > 1 ? void 0 : i ? z(e, a) : e, o = t.length - 1, s; o >= 0; o--)
+var E = Object.defineProperty, T = Object.getOwnPropertyDescriptor, h = (t, e, a, i) => {
+  for (var n = i > 1 ? void 0 : i ? T(e, a) : e, o = t.length - 1, s; o >= 0; o--)
     (s = t[o]) && (n = (i ? s(e, a, n) : s(n)) || n);
-  return i && n && x(e, a, n), n;
+  return i && n && E(e, a, n), n;
 };
 let c = class extends f {
   configChanged(t) {
@@ -182,12 +182,14 @@ let c = class extends f {
     </ha-card>`;
   }
 };
-g([
+h([
   d({ attribute: !1 })
 ], c.prototype, "hass", 2);
-g([
+h([
   d({ attribute: !1 })
 ], c.prototype, "config", 2);
-c = g([
+c = h([
   y("localized-date-time-card-editor")
 ], c);
+customElements.define("localized-date-time-card", r);
+customElements.define("localized-date-time-card-editor", c);

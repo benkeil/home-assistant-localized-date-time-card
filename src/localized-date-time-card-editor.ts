@@ -4,7 +4,7 @@ import type { HomeAssistant } from 'custom-card-helpers'
 import type { CardConfig } from './localized-date-time-card'
 
 @customElement('localized-date-time-card-editor')
-class LocalizedDateTimeCardEditor extends LitElement {
+export class LocalizedDateTimeCardEditor extends LitElement {
   @property({ attribute: false })
   public hass!: HomeAssistant
   @property({ attribute: false })
