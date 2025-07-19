@@ -35,8 +35,6 @@ export class LocalizedDateTimeCardEditor extends LitElement {
             .hass=${this.hass}
             .data=${this.config}
             .schema=${[
-              { name: 'showDate', selector: { boolean: {} } },
-              { name: 'showTime', selector: { boolean: {} } },
               { name: 'locale', selector: { text: {} } },
               { name: 'options', selector: { object: {} } },
             ]}

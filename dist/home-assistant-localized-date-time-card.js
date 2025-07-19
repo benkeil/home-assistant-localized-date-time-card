@@ -574,6 +574,9 @@ let y = class extends v {
   static getConfigElement() {
     return document.createElement("localized-date-time-card-editor");
   }
+  setConfig(n) {
+    this.config = n;
+  }
   getCardSize() {
     return 1;
   }
@@ -714,8 +717,6 @@ let H = class extends v {
             .hass=${this.hass}
             .data=${this.config}
             .schema=${[
-      { name: "showDate", selector: { boolean: {} } },
-      { name: "showTime", selector: { boolean: {} } },
       { name: "locale", selector: { text: {} } },
       { name: "options", selector: { object: {} } }
     ]}
