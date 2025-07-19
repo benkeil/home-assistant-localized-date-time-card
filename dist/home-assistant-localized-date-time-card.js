@@ -571,6 +571,9 @@ console.groupCollapsed(`%cLocalized Date Time Card ${zt}`, "color:black; font-we
 console.log(`Github repository: ${jt}`);
 console.groupEnd();
 let y = class extends v {
+  setConfig(r) {
+    this.config = r;
+  }
   static getConfigElement() {
     return document.createElement("localized-date-time-card-editor");
   }

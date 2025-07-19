@@ -22,6 +22,10 @@ export class LocalizedDateTimeCard extends LitElement {
   @property({ attribute: false })
   private config!: CardConfig
 
+  public setConfig(config: CardConfig) {
+    this.config = config
+  }
+
   static getConfigElement() {
     return document.createElement('localized-date-time-card-editor')
   }
