@@ -26,9 +26,9 @@ export class LocalizedDateTimeCard extends LitElement {
     this.config = config
   }
 
-  static getConfigElement() {
-    return document.createElement('localized-date-time-card-editor')
-  }
+  // static getConfigElement() {
+  //   return document.createElement('localized-date-time-card-editor')
+  // }
 
   private static defaultDateTimeFormatOptions: Intl.DateTimeFormatOptions = {
     weekday: 'long',
