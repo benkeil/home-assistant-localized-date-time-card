@@ -15,14 +15,16 @@ export interface CardConfig extends LovelaceCardConfig {
   options?: Intl.DateTimeFormatOptions
 }
 
+export interface PartialCardConfig extends Omit<CardConfig, 'type'> {}
+
 @customElement('localized-date-time-card')
 export class LocalizedDateTimeCard extends LitElement {
   @property({ attribute: false })
   public hass!: HomeAssistant
   @property({ attribute: false })
-  public config!: CardConfig
+  public config!: PartialCardConfig
 
-  public setConfig(config: CardConfig): void {
+  public setConfig(config: PartialCardConfig): void {
     this.config = config
   }
 
@@ -32,10 +34,7 @@ export class LocalizedDateTimeCard extends LitElement {
   }
 
   private static defaultDateTimeFormatOptions: Intl.DateTimeFormatOptions = {
-    weekday: 'long',
-    year: 'numeric',
-    month: 'long',
-    day: 'numeric',
+    dateStyle: 'full',
   }
 
   static styles = css`
@@ -43,28 +42,22 @@ export class LocalizedDateTimeCard extends LitElement {
       display: block;
       height: auto;
       width: 100%;
-      overflow: hidden;
+      height: 100%;
     }
 
     .date-time {
       padding: 10px;
       color: var(--primary-text-color);
-      font-size: 2rem;
-      font-weight: 700;
-      font-variant-numeric: tabular-nums;
-      font-feature-settings: 'tnum';
-      font-family:
-        'Inter',
-        -apple-system,
-        BlinkMacSystemFont,
-        'Segoe UI',
-        Roboto,
-        sans-serif;
-      letter-spacing: -0.03em;
-      line-height: 1.2;
+      width: 100%;
+      height: 100%;
+      display: flex;
+      justify-content: center;
+      align-items: center;
       text-align: center;
-      white-space: nowrap;
-      overflow: hidden;
+      font-size: clamp(1rem, 5vw, 3rem); /* skaliert mit Viewport */
+      font-weight: 700;
+      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+      letter-spacing: 0.03em;
     }
 
     .align-center {
@@ -86,7 +79,7 @@ export class LocalizedDateTimeCard extends LitElement {
 
   public getGridOptions() {
     return {
-      rows: 1,
+      rows: 2,
       columns: 12,
       min_rows: 1,
     }
@@ -123,7 +116,7 @@ export class LocalizedDateTimeCard extends LitElement {
       ...LocalizedDateTimeCard.defaultDateTimeFormatOptions,
       ...this.config.options,
     }
-    const dateStr = this.getDateTime().toLocaleDateString(locale, options)
+    const dateStr = this.getDateTime().toLocaleString(locale, options)
     return html` <ha-card>
       <div class="date-time align-center">${dateStr}</div>
     </ha-card>`
@@ -147,7 +140,7 @@ declare global {
 }
 
 window.customCards = [
-  ...window.customCards,
+  ...(window.customCards ?? []),
   {
     type: 'localized-date-time-card',
     name: 'Localized Date Time Card',

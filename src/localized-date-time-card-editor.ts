@@ -1,7 +1,7 @@
 import { LitElement, html } from 'lit'
 import { customElement, property } from 'lit/decorators.js'
 import type { HomeAssistant } from 'custom-card-helpers'
-import type { CardConfig } from './localized-date-time-card'
+import type { CardConfig, PartialCardConfig } from './localized-date-time-card'
 
 // https://github.com/home-assistant/frontend/blob/dev/src/components/ha-form/types.ts#L5
 
@@ -18,7 +18,7 @@ export class LocalizedDateTimeCardEditor extends LitElement {
 
   public configChanged(newConfig: CardConfig) {
     this.dispatchEvent(
-      new CustomEvent<Omit<CardConfig, 'type'>>('config-changed', {
+      new CustomEvent<PartialCardConfig>('config-changed', {
         bubbles: true,
         composed: true,
         detail: { config: newConfig },
@@ -34,7 +34,17 @@ export class LocalizedDateTimeCardEditor extends LitElement {
         .schema=${[
           { name: 'entity', selector: { entity: { domain: 'sensor', integration: 'time_date' } } },
           { name: 'locale', selector: { text: {} } },
-          { name: 'options', selector: { object: {} }, description: { suffix: 'hääää', suggested_value: 'lol' } },
+          {
+            name: 'options',
+            selector: {
+              object: {
+                fields: {
+                  dateStyle: { name: 'dateStyle', selector: { text: {} } },
+                  timeStyle: { name: 'timeStyle', selector: { text: {} }, description: { suggested_value: 'full' } },
+                },
+              },
+            },
+          },
         ]}
         @value-changed=${(ev: CustomEvent) => {
           const newConfig = { ...this.config, ...ev.detail.value }

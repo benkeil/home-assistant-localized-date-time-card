@@ -15,7 +15,7 @@
 
 a {
   font-weight: 500;
-  color: #646cff;
+  color: #060826;
   text-decoration: inherit;
 }
 a:hover {
@@ -35,4 +35,9 @@ body {
     color: #213547;
     background-color: #ffffff;
   }
+}
+
+localized-date-time-card {
+  height: 100px;
+  border: 1px solid blue;
 }

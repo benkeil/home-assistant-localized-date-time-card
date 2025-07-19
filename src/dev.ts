@@ -3,14 +3,12 @@ import './localized-date-time-card.ts'
 
 document.documentElement.style.cssText = '--primary-text-color: red'
 
-const card = document.createElement('date-time-card') as any
-const editor = document.createElement('date-time-card-editor') as any
+const card = document.createElement('localized-date-time-card')
 
-card.config = {
-  showTime: true,
+card.setConfig({
   locale: 'de-DE',
   entity: { entity: 'sensor.date' },
-}
+})
 
 window.setInterval(() => {
   card.hass = {
@@ -33,8 +31,7 @@ window.setInterval(() => {
         entity_id: 'sensor.date',
       },
     },
-  } as Partial<HomeAssistant>
+  } as Partial<HomeAssistant> as HomeAssistant
 }, 1_000)
 
 document.body.appendChild(card)
-document.body.appendChild(editor)
