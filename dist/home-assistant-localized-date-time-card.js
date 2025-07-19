@@ -691,6 +691,9 @@ var Lt = Object.defineProperty, kt = Object.getOwnPropertyDescriptor, F = (n, t,
   return s && i && Lt(t, e, i), i;
 };
 let H = class extends v {
+  setConfig(n) {
+    this.config = n;
+  }
   configChanged(n) {
     this.dispatchEvent(
       new CustomEvent("config-changed", {
