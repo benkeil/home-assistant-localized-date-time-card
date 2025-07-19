@@ -3,6 +3,9 @@ import { customElement, property } from 'lit/decorators.js'
 import type { HomeAssistant } from 'custom-card-helpers'
 import type { CardConfig } from './localized-date-time-card'
 
+type PartialCardCOnfig = Omit<CardConfig, 'type'>
+class CardConfigEvent extends CustomEvent<PartialCardCOnfig> {}
+
 @customElement('localized-date-time-card-editor')
 export class LocalizedDateTimeCardEditor extends LitElement {
   @property({ attribute: false })
@@ -14,9 +17,9 @@ export class LocalizedDateTimeCardEditor extends LitElement {
     this.config = config
   }
 
-  public configChanged(newConfig: CardConfig) {
+  public configChanged(newConfig: PartialCardCOnfig) {
     this.dispatchEvent(
-      new CustomEvent<Omit<CardConfig, 'type'>>('config-changed', {
+      new CardConfigEvent('config-changed', {
         bubbles: true,
         composed: true,
         detail: { config: newConfig },
@@ -25,37 +28,21 @@ export class LocalizedDateTimeCardEditor extends LitElement {
   }
 
   public render() {
-    return html` <ha-card> 
-        <sl-tab-group>
-          <sl-tab slot="nav" panel="general">General</sl-tab>
-          <sl-tab slot="nav" panel="entity">Entity</sl-tab>
-        </sl-tab-group>
-        <sl-tab-panel name="general">
-          <ha-form
-            .hass=${this.hass}
-            .data=${this.config}
-            .schema=${[
-              { name: 'locale', selector: { text: {} } },
-              { name: 'options', selector: { object: {} } },
-            ]}
-            @value-changed=${(ev: CustomEvent) => {
-              const newConfig = { ...this.config, ...ev.detail.value }
-              this.configChanged(newConfig)
-            }}
-          ></ha-form>
-        </sl-tab-panel>
-        <sl-tab-panel name="entity">
-          <ha-entity-picker
-            .hass=${this.hass}
-            .value=${this.config.entity?.entity}
-            .includeDomains=${['sensor']}
-            @value-changed=${(ev: CustomEvent) => {
-              const newConfig = { ...this.config, entity: { entity: ev.detail.value } }
-              this.configChanged(newConfig)
-            }}
-          ></ha-entity-picker>
-        </sl-tab-panel>
-      </sl-tab-group>
+    return html` <ha-card>
+      <ha-form
+        .hass=${this.hass}
+        .data=${this.config}
+        .schema=${[
+          { name: 'locale', selector: { text: {} } },
+          { name: 'options', selector: { object: {} } },
+        ]}
+        @value-changed=${(ev: CardConfigEvent) => {
+          this.configChanged({
+            locale: ev.detail.locale,
+            options: ev.detail.options,
+          })
+        }}
+      ></ha-form>
     </ha-card>`
   }
 }
