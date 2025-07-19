@@ -76,11 +76,6 @@ export class LocalizedDateTimeCard extends LitElement {
     }
   `
 
-  public setConfig(config: CardConfig): void {
-    console.debug('setConfig', config)
-    this.config = config
-  }
-
   public getCardSize() {
     return 2
   }

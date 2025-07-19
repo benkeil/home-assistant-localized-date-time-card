@@ -575,9 +575,6 @@ let y = class extends v {
   static getConfigElement() {
     return document.createElement("localized-date-time-card-editor");
   }
-  setConfig(r) {
-    console.debug("setConfig", r), this.config = r;
-  }
   getCardSize() {
     return 2;
   }
