@@ -8,9 +8,9 @@ export class LocalizedDateTimeCardEditor extends LitElement {
   @property({ attribute: false })
   public hass!: HomeAssistant
   @property({ attribute: false })
-  private config!: CardConfig
+  public config!: CardConfig
 
-  configChanged(newConfig: CardConfig) {
+  public configChanged(newConfig: CardConfig) {
     this.dispatchEvent(
       new CustomEvent<Omit<CardConfig, 'type'>>('config-changed', {
         bubbles: true,
