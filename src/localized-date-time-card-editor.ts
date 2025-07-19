@@ -17,7 +17,7 @@ export class LocalizedDateTimeCardEditor extends LitElement {
     this.config = config
   }
 
-  public configChanged(newConfig: PartialCardCOnfig) {
+  public configChanged(newConfig: CardConfig) {
     this.dispatchEvent(
       new CardConfigEvent('config-changed', {
         bubbles: true,
@@ -36,12 +36,10 @@ export class LocalizedDateTimeCardEditor extends LitElement {
           { name: 'locale', selector: { text: {} } },
           { name: 'options', selector: { object: {} } },
         ]}
-        @value-changed=${(ev: CardConfigEvent) => {
-          console.log('config-changed', JSON.stringify(ev.detail))
-          this.configChanged({
-            locale: ev.detail.locale,
-            options: ev.detail.options,
-          })
+        @value-changed=${(ev: CustomEvent) => {
+          console.log('value-changed', JSON.stringify(ev, null, 2))
+          const newConfig = { ...this.config, ...ev.detail.value }
+          this.configChanged(newConfig)
         }}
       ></ha-form>
     </ha-card>`
