@@ -26,7 +26,8 @@ export class LocalizedDateTimeCard extends LitElement {
     this.config = config
   }
 
-  public static getConfigElement() {
+  public static async getConfigElement() {
+    await import('./localized-date-time-card-editor')
     return document.createElement('localized-date-time-card-editor')
   }
 
