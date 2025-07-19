@@ -86,7 +86,7 @@ export class LocalizedDateTimeCard extends LitElement {
   public getGridOptions() {
     return {
       rows: 1,
-      columns: 6,
+      columns: 12,
       min_rows: 1,
     }
   }
