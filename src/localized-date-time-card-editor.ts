@@ -10,7 +10,7 @@ export class LocalizedDateTimeCardEditor extends LitElement {
   @property({ attribute: false })
   public config!: CardConfig
 
-  public setConfig(config: CardConfig) {
+  public setConfig(config: CardConfig): void {
     this.config = config
   }
 

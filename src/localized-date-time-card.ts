@@ -20,9 +20,9 @@ export class LocalizedDateTimeCard extends LitElement {
   @property({ attribute: false })
   public hass!: HomeAssistant
   @property({ attribute: false })
-  private config!: CardConfig
+  public config!: CardConfig
 
-  public setConfig(config: CardConfig) {
+  public setConfig(config: CardConfig): void {
     this.config = config
   }
 
