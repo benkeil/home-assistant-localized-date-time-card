@@ -7,7 +7,6 @@ const card = document.createElement('date-time-card') as any
 const editor = document.createElement('date-time-card-editor') as any
 
 card.config = {
-  showDate: true,
   showTime: true,
   locale: 'de-DE',
   entity: { entity: 'sensor.date' },

@@ -74,18 +74,11 @@ export class LocalizedDateTimeCard extends LitElement {
     .align-left {
       text-align: left;
     }
-
-    @media (prefers-color-scheme: light) {
-      :host {
-        background: rgba(255, 255, 255, 0.6);
-        color: #000;
-      }
-    }
   `
 
   public setConfig(config: CardConfig): void {
-    this.config = config
     console.debug('setConfig', config)
+    this.config = config
   }
 
   public getCardSize() {

@@ -1,10 +1,10 @@
 import { LitElement, html } from 'lit'
 import { customElement, property } from 'lit/decorators.js'
-import { fireEvent, type HomeAssistant } from 'custom-card-helpers'
+import { type HomeAssistant } from 'custom-card-helpers'
 import type { CardConfig } from './localized-date-time-card'
 
-// type PartialCardCOnfig = Omit<CardConfig, 'type'>
-// class CardConfigEvent extends CustomEvent<PartialCardCOnfig> {}
+type PartialCardCOnfig = Omit<CardConfig, 'type'>
+class CardConfigEvent extends CustomEvent<PartialCardCOnfig> {}
 
 @customElement('localized-date-time-card-editor')
 export class LocalizedDateTimeCardEditor extends LitElement {
@@ -18,7 +18,14 @@ export class LocalizedDateTimeCardEditor extends LitElement {
   }
 
   public configChanged(newConfig: CardConfig) {
-    fireEvent(this, 'config-changed', { config: newConfig })
+    // fireEvent(this, 'config-changed', { config: newConfig })
+    this.dispatchEvent(
+      new CardConfigEvent('config-changed', {
+        bubbles: true,
+        composed: true,
+        detail: { config: newConfig },
+      })
+    )
   }
 
   public render() {
