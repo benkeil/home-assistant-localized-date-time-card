@@ -16,7 +16,7 @@ export default defineConfig({
         },
       },
     },
-    target: 'es2017',
+    target: 'es2021',
     minify: true,
     outDir: 'dist',
     emptyOutDir: true,
