@@ -1,6 +1,7 @@
 import { LitElement, css, html } from 'lit'
 import { customElement, property } from 'lit/decorators.js'
 import type { HomeAssistant, LovelaceCardConfig, EntityConfig } from 'custom-card-helpers'
+import type { LocalizedDateTimeCardEditor } from './localized-date-time-card-editor'
 
 const version = 'main'
 const repoUrl = 'https://github.com/benkeil/home-assistant-localized-date-time-card'
@@ -9,15 +10,6 @@ console.groupCollapsed(`%cLocalized Date Time Card ${version}`, 'color:black; fo
 console.log(`Github repository: ${repoUrl}`)
 console.groupEnd()
 
-window.customCards = [
-  ...window.customCards,
-  {
-    type: 'localized-date-time-card',
-    name: 'Localized Date Time Card',
-    description: 'Display Date and/or Time in a card in your localewith optional sensor entity support.',
-    preview: true,
-  },
-]
 export interface CardConfig extends LovelaceCardConfig {
   locale?: string
   entity?: EntityConfig
@@ -31,7 +23,7 @@ export class LocalizedDateTimeCard extends LitElement {
   @property({ attribute: false })
   private config!: CardConfig
 
-  static getConfigElement() {
+  static getConfigElement(): LocalizedDateTimeCardEditor {
     return document.createElement('localized-date-time-card-editor')
   }
 
@@ -156,3 +148,13 @@ declare global {
     }>
   }
 }
+
+window.customCards = [
+  ...window.customCards,
+  {
+    type: 'localized-date-time-card',
+    name: 'Localized Date Time Card',
+    description: 'Display Date and/or Time in a card in your localewith optional sensor entity support.',
+    preview: true,
+  },
+]
