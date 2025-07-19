@@ -9,12 +9,11 @@ export default defineConfig({
       fileName: () => 'home-assistant-localized-date-time-card.js',
     },
     rollupOptions: {
-      external: [/^custom-card-helpers/],
       output: {
         inlineDynamicImports: true,
       },
     },
-    // target: 'es2021',
+    target: 'es2021',
     minify: true,
     outDir: 'dist',
     emptyOutDir: true,
