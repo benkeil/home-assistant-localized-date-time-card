@@ -37,6 +37,7 @@ export class LocalizedDateTimeCardEditor extends LitElement {
           { name: 'options', selector: { object: {} } },
         ]}
         @value-changed=${(ev: CardConfigEvent) => {
+          console.log('config-changed', JSON.stringify(ev.detail))
           this.configChanged({
             locale: ev.detail.locale,
             options: ev.detail.options,

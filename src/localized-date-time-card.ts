@@ -88,7 +88,7 @@ export class LocalizedDateTimeCard extends LitElement {
   }
 
   public getCardSize() {
-    return 1
+    return 2
   }
 
   public getGridOptions() {

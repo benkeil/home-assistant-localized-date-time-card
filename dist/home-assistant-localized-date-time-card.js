@@ -3,7 +3,7 @@
  * Copyright 2019 Google LLC
  * SPDX-License-Identifier: BSD-3-Clause
  */
-const U = globalThis, L = U.ShadowRoot && (U.ShadyCSS === void 0 || U.ShadyCSS.nativeShadow) && "adoptedStyleSheets" in Document.prototype && "replace" in CSSStyleSheet.prototype, k = Symbol(), G = /* @__PURE__ */ new WeakMap();
+const U = globalThis, L = U.ShadowRoot && (U.ShadyCSS === void 0 || U.ShadyCSS.nativeShadow) && "adoptedStyleSheets" in Document.prototype && "replace" in CSSStyleSheet.prototype, k = Symbol(), J = /* @__PURE__ */ new WeakMap();
 let it = class {
   constructor(t, e, s) {
     if (this._$cssResult$ = !0, s !== k) throw Error("CSSResult is not constructable. Use `unsafeCSS` or `css` instead.");
@@ -14,7 +14,7 @@ let it = class {
     const e = this.t;
     if (L && t === void 0) {
       const s = e !== void 0 && e.length === 1;
-      s && (t = G.get(e)), t === void 0 && ((this.o = t = new CSSStyleSheet()).replaceSync(this.cssText), s && G.set(e, t));
+      s && (t = J.get(e)), t === void 0 && ((this.o = t = new CSSStyleSheet()).replaceSync(this.cssText), s && J.set(e, t));
     }
     return t;
   }
@@ -35,7 +35,7 @@ const ct = (r) => new it(typeof r == "string" ? r : r + "", void 0, k), dt = (r,
     const s = document.createElement("style"), i = U.litNonce;
     i !== void 0 && s.setAttribute("nonce", i), s.textContent = e.cssText, r.appendChild(s);
   }
-}, J = L ? (r) => r : (r) => r instanceof CSSStyleSheet ? ((t) => {
+}, G = L ? (r) => r : (r) => r instanceof CSSStyleSheet ? ((t) => {
   let e = "";
   for (const s of t.cssRules) e += s.cssText;
   return ct(e);
@@ -129,8 +129,8 @@ let A = class extends HTMLElement {
     const e = [];
     if (Array.isArray(t)) {
       const s = new Set(t.flat(1 / 0).reverse());
-      for (const i of s) e.unshift(J(i));
-    } else t !== void 0 && e.push(J(t));
+      for (const i of s) e.unshift(G(i));
+    } else t !== void 0 && e.push(G(t));
     return e;
   }
   static _$Eu(t, e) {
@@ -578,7 +578,7 @@ let y = class extends v {
     this.config = r;
   }
   getCardSize() {
-    return 1;
+    return 2;
   }
   getGridOptions() {
     return {
@@ -718,7 +718,7 @@ let H = class extends v {
       { name: "options", selector: { object: {} } }
     ]}
         @value-changed=${(r) => {
-      this.configChanged({
+      console.log("config-changed", JSON.stringify(r.detail)), this.configChanged({
         locale: r.detail.locale,
         options: r.detail.options
       });
