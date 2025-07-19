@@ -1,7 +1,6 @@
 import { LitElement, css, html } from 'lit'
 import { customElement, property } from 'lit/decorators.js'
 import type { HomeAssistant, LovelaceCardConfig, EntityConfig } from 'custom-card-helpers'
-import type { LocalizedDateTimeCardEditor } from './localized-date-time-card-editor'
 
 const version = 'main'
 const repoUrl = 'https://github.com/benkeil/home-assistant-localized-date-time-card'
@@ -23,7 +22,7 @@ export class LocalizedDateTimeCard extends LitElement {
   @property({ attribute: false })
   private config!: CardConfig
 
-  static getConfigElement(): LocalizedDateTimeCardEditor {
+  static getConfigElement() {
     return document.createElement('localized-date-time-card-editor')
   }
 
