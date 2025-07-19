@@ -688,7 +688,7 @@ var Lt = Object.defineProperty, kt = Object.getOwnPropertyDescriptor, F = (r, t,
 };
 let H = class extends v {
   setConfig(r) {
-    this.config = r;
+    this._config = r;
   }
   configChanged(r) {
     this.dispatchEvent(
@@ -703,14 +703,13 @@ let H = class extends v {
     return at` <ha-card>
       <ha-form
         .hass=${this.hass}
-        .data=${this.config}
+        .data=${this._config}
         .schema=${[
       { name: "locale", selector: { text: {} } },
       { name: "options", selector: { object: {} } }
     ]}
         @value-changed=${(r) => {
-      console.log(r);
-      const t = { ...this.config, ...r.detail.value };
+      const t = { ...this._config, ...r.detail.value };
       this.configChanged(t);
     }}
       ></ha-form>
@@ -722,7 +721,7 @@ F([
 ], H.prototype, "hass", 2);
 F([
   z({ attribute: !1 })
-], H.prototype, "config", 2);
+], H.prototype, "_config", 2);
 H = F([
   lt("localized-date-time-card-editor")
 ], H);

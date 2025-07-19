@@ -8,10 +8,10 @@ export class LocalizedDateTimeCardEditor extends LitElement {
   @property({ attribute: false })
   public hass!: HomeAssistant
   @property({ attribute: false })
-  private config!: CardConfig
+  private _config!: CardConfig
 
   public setConfig(config: CardConfig): void {
-    this.config = config
+    this._config = config
   }
 
   public configChanged(newConfig: CardConfig) {
@@ -28,14 +28,13 @@ export class LocalizedDateTimeCardEditor extends LitElement {
     return html` <ha-card>
       <ha-form
         .hass=${this.hass}
-        .data=${this.config}
+        .data=${this._config}
         .schema=${[
           { name: 'locale', selector: { text: {} } },
           { name: 'options', selector: { object: {} } },
         ]}
         @value-changed=${(ev: CustomEvent) => {
-          console.log(ev)
-          const newConfig = { ...this.config, ...ev.detail.value }
+          const newConfig = { ...this._config, ...ev.detail.value }
           this.configChanged(newConfig)
         }}
       ></ha-form>
