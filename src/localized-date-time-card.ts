@@ -2,15 +2,22 @@ import { LitElement, css, html } from 'lit'
 import { customElement, property } from 'lit/decorators.js'
 import type { HomeAssistant, LovelaceCardConfig, EntityConfig } from 'custom-card-helpers'
 
-window.customCards = window.customCards || []
+const version = 'main'
+const repoUrl = 'https://github.com/benkeil/home-assistant-localized-date-time-card'
 
-window.customCards.push({
-  type: 'localized-date-time-card',
-  name: 'Localized Date Time Card',
-  description: 'Display Date and/or Time in a card in your localewith optional sensor entity support.',
-  preview: true,
-})
+console.groupCollapsed(`%cLocalized Date Time Card ${version}`, 'color:black; font-weight: bold; background: tomato; padding: 2px; border-radius: 5px;')
+console.log(`Github repository: ${repoUrl}`)
+console.groupEnd()
 
+window.customCards = [
+  ...window.customCards,
+  {
+    type: 'localized-date-time-card',
+    name: 'Localized Date Time Card',
+    description: 'Display Date and/or Time in a card in your localewith optional sensor entity support.',
+    preview: true,
+  },
+]
 export interface CardConfig extends LovelaceCardConfig {
   locale?: string
   entity?: EntityConfig

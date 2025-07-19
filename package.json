@@ -3,6 +3,7 @@
   "private": true,
   "version": "0.0.0",
   "type": "module",
+  "module": "dist/home-assistant-localized-date-time-card.js",
   "scripts": {
     "dev": "vite",
     "build": "tsc && vite build",
