@@ -34,13 +34,14 @@ export class LocalizedDateTimeCardEditor extends LitElement {
         .schema=${[
           { name: 'entity', selector: { entity: { domain: 'sensor', integration: 'time_date' } } },
           { name: 'locale', selector: { text: {} } },
+          { name: 'align', selector: { select: { options: ['left', 'center', 'right'] } } },
           {
             name: 'options',
             selector: {
               object: {
                 fields: {
                   dateStyle: { name: 'dateStyle', selector: { text: {} } },
-                  timeStyle: { name: 'timeStyle', selector: { text: {} }, description: { suggested_value: 'full' } },
+                  timeStyle: { name: 'timeStyle', selector: { text: {} } },
                 },
               },
             },

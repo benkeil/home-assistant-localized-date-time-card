@@ -13,6 +13,7 @@ export interface CardConfig extends LovelaceCardConfig {
   locale?: string
   entity?: EntityConfig
   options?: Intl.DateTimeFormatOptions
+  align?: 'left' | 'center' | 'right'
 }
 
 export interface PartialCardConfig extends Omit<CardConfig, 'type'> {}
@@ -45,19 +46,23 @@ export class LocalizedDateTimeCard extends LitElement {
       height: 100%;
     }
 
-    .date-time {
-      padding: 10px;
-      color: var(--primary-text-color);
+    .date-wrapper {
       width: 100%;
       height: 100%;
       display: flex;
       justify-content: center;
       align-items: center;
       text-align: center;
-      font-size: clamp(1rem, 5vw, 3rem); /* skaliert mit Viewport */
+      overflow: hidden;
+    }
+
+    .date-content {
+      display: inline-block;
+      font-size: 2vw; /* Skaliert mit Viewport-Breite */
       font-weight: 700;
       font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
-      letter-spacing: 0.03em;
+      white-space: nowrap;
+      padding: 10px;
     }
 
     .align-center {
@@ -117,8 +122,11 @@ export class LocalizedDateTimeCard extends LitElement {
       ...this.config.options,
     }
     const dateStr = this.getDateTime().toLocaleString(locale, options)
+    const align = this.config.align || 'center'
     return html` <ha-card>
-      <div class="date-time align-center">${dateStr}</div>
+      <div class="date-wrapper">
+        <div class="date-content align-${align}">${dateStr}</div>
+      </div>
     </ha-card>`
   }
 }
