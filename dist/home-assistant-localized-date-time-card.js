@@ -629,9 +629,9 @@ y.styles = dt`
     }
 
     ha-card {
-      display: flex;
-      height: 100%;
-      flex-direction: column;
+      display: block;
+      height: auto;
+      width: 100%;
     }
 
     .date-wrapper {
