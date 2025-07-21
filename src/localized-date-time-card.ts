@@ -46,8 +46,7 @@ export class LocalizedDateTimeCard extends LitElement {
     }
 
     ha-card {
-      display: block;
-      height: auto;
+      height: 100%;
       width: 100%;
     }
 
