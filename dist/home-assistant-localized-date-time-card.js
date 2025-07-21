@@ -624,9 +624,14 @@ y.defaultDateTimeFormatOptions = {
 y.styles = dt`
     :host {
       display: block;
-      height: auto;
       width: 100%;
       height: 100%;
+    }
+
+    ha-card {
+      display: flex;
+      height: 100%;
+      flex-direction: column;
     }
 
     .date-wrapper {

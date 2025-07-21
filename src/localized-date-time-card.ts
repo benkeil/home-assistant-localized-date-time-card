@@ -41,9 +41,14 @@ export class LocalizedDateTimeCard extends LitElement {
   static styles = css`
     :host {
       display: block;
-      height: auto;
       width: 100%;
       height: 100%;
+    }
+
+    ha-card {
+      display: flex;
+      height: 100%;
+      flex-direction: column;
     }
 
     .date-wrapper {
