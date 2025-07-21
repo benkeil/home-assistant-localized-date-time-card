@@ -640,7 +640,7 @@ y.styles = dt`
     }
 
     .date-content {
-      display: inline-block;
+      display: flex;
       font-size: 2vw; /* Skaliert mit Viewport-Breite */
       font-weight: 700;
       font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
