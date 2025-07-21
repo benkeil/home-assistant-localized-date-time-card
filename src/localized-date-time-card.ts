@@ -131,7 +131,7 @@ export class LocalizedDateTimeCard extends LitElement {
     }
     const dateStr = this.getDateTime().toLocaleString(locale, options)
     const align = this.config.align ?? 'center'
-    return html` <ha-card>
+    return html` <ha-card style="height: 100%;">
       <div class="date-wrapper align-${align}">
         <div class="date-content">${dateStr}</div>
       </div>

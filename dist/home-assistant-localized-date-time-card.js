@@ -611,7 +611,7 @@ let y = class extends v {
       ...y.defaultDateTimeFormatOptions,
       ...this.config.options
     }, e = this.getDateTime().toLocaleString(r, t), s = this.config.align ?? "center";
-    return at` <ha-card>
+    return at` <ha-card style="height: 100%;">
       <div class="date-wrapper align-${s}">
         <div class="date-content">${e}</div>
       </div>
