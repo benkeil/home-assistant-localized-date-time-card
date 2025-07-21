@@ -629,6 +629,7 @@ y.styles = dt`
     }
 
     ha-card {
+      display: block;
       height: 100%;
       width: 100%;
     }
