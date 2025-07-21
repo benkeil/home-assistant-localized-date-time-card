@@ -8,6 +8,7 @@ const card = document.createElement('localized-date-time-card')
 card.setConfig({
   locale: 'de-DE',
   entity: { entity: 'sensor.date' },
+  align: 'right',
 })
 
 window.setInterval(() => {

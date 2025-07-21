@@ -65,16 +65,19 @@ export class LocalizedDateTimeCard extends LitElement {
       padding: 10px;
     }
 
-    .align-center {
+    .date-wrapper.align-left {
+      justify-content: flex-start;
+      text-align: left;
+    }
+
+    .date-wrapper.align-center {
+      justify-content: center;
       text-align: center;
     }
 
-    .align-right {
+    .date-wrapper.align-right {
+      justify-content: flex-end;
       text-align: right;
-    }
-
-    .align-left {
-      text-align: left;
     }
   `
 
@@ -122,10 +125,10 @@ export class LocalizedDateTimeCard extends LitElement {
       ...this.config.options,
     }
     const dateStr = this.getDateTime().toLocaleString(locale, options)
-    const align = this.config.align || 'center'
+    const align = this.config.align ?? 'center'
     return html` <ha-card>
-      <div class="date-wrapper">
-        <div class="date-content align-${align}">${dateStr}</div>
+      <div class="date-wrapper align-${align}">
+        <div class="date-content">${dateStr}</div>
       </div>
     </ha-card>`
   }
